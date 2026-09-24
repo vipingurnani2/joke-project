@@ -1,0 +1,15 @@
+name: Test Joke File
+on: [push, pull_request]
+jobs:
+  check-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check if file has text
+        run: |
+          if [ -s joke.txt ]; then
+            echo "File is good!"
+          else
+            echo "Error: File is empty!"
+            exit 1
+          fi
